@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>
+		NORTHSTAR® — Creative Studio
+	</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+		<style>
+
+			:root {
+			  --dark: #171916;
+			  --cream: #eae8df;
+			  --lime: #d4f36b;
+			  --grey: #85877f;
+			}
+
+			* {
+			  box-sizing: border-box;
+			  scroll-behavior: smooth;
+			}
+
+			body {
+			  margin: 0;
+			  background: var(--dark);
+			  color: var(--cream);
+			  font-family: 'DM Sans', sans-serif;
+			  overflow-x: hidden;
+			}
+
+			a {
+			  text-decoration: none;
+			  color: inherit;
+			}
+
+			img {
+			  display: block;
+			  width: 100%;
+			}
+
+			.serif {
+			  font-family: 'Playfair Display', serif;
+			}
+
+			::selection {
+			  background: var(--lime);
+			  color: var(--dark);
+			}
+
+			/* NAVBAR */
+
+			.navbar {
+			  height: 90px;
+			  border-bottom: 1px solid rgba(255,255,255,.12);
+			}
+
+			.nav-link {
+			  position: relative;
+			  color: #aaa;
+			  transition: color .3s;
+			}
+
+			.nav-link:hover {
+			  color: var(--lime);
+			}
+
+			.nav-link::after {
+			  content: "";
+			  position: absolute;
+			  left: 0;
+			  bottom: -7px;
+			  width: 0;
+			  height: 1px;
+			  background: var(--lime);
+			  transition: width .3s;
+			}
+
+			.nav-link:hover::after {
+			  width: 100%;
+			}
+
+			.logo {
+			  letter-spacing: -2px;
+			  font-size: 25px;
+			  font-weight: 700;
+			}
+
+			/* MOBILE MENU */
+
+			.menu-check {
+			  display: none;
+			}
+
+			.menu-icon {
+			  display: none;
+			  cursor: pointer;
+			  font-size: 25px;
+			}
+
+			.mobile-menu {
+			  display: none;
+			}
+
+			/* HERO */
+
+			.hero {
+			  padding-top: 105px;
+			  padding-bottom: 100px;
+			}
+
+			.eyebrow {
+			  font-size: 10px;
+			  letter-spacing: 3px;
+			  text-transform: uppercase;
+			  color: var(--lime);
+			}
+
+			.hero-heading {
+			  font-size: clamp(65px, 10vw, 145px);
+			  line-height: .91;
+			  letter-spacing: -.085em;
+			  font-weight: 600;
+			  animation: heroText 1s ease both;
+			}
+
+			.hero-heading .italic {
+			  font-family: 'Playfair Display', serif;
+			  font-style: italic;
+			  font-weight: 500;
+			  color: var(--lime);
+			  letter-spacing: -.06em;
+			}
+
+			.hero-description {
+			  color: #aaa;
+			  line-height: 1.9;
+			  max-width: 370px;
+			  font-size: 14px;
+			}
+
+			.hero-visual {
+			  position: relative;
+			  margin-top: 75px;
+			  height: 590px;
+			}
+
+			.hero-main-image {
+			  position: absolute;
+			  top: 0;
+			  right: 0;
+			  width: 78%;
+			  height: 100%;
+			  overflow: hidden;
+			  animation: imageEnter 1.2s ease both;
+			}
+
+			.hero-main-image img {
+			  height: 100%;
+			  object-fit: cover;
+			  transition: transform 1s;
+			}
+
+			.hero-main-image:hover img {
+			  transform: scale(1.035);
+			}
+
+			.hero-side-note {
+			  position: absolute;
+			  left: 0;
+			  bottom: 55px;
+			  z-index: 2;
+			  width: 260px;
+			  background: var(--lime);
+			  color: var(--dark);
+			  padding: 35px;
+			}
+
+			.hero-side-note p {
+			  font-size: 11px;
+			  line-height: 1.8;
+			}
+
+			.hero-side-note h3 {
+			  font-size: 28px;
+			  line-height: 1.15;
+			  margin: 15px 0;
+			  font-family: 'Playfair Display', serif;
+			}
+
+			/* BUTTON */
+
+			.text-link {
+			  display: inline-flex;
+			  align-items: center;
+			  gap: 20px;
+			  padding-bottom: 9px;
+			  border-bottom: 1px solid var(--lime);
+			  font-size: 11px;
+			  letter-spacing: 1px;
+			  transition: gap .3s;
+			}
+
+			.text-link:hover {
+			  gap: 32px;
+			  color: var(--lime);
+			}
+
+			/* MARQUEE */
+
+			.marquee {
+			  overflow: hidden;
+			  border-top: 1px solid #353731;
+			  border-bottom: 1px solid #353731;
+			  padding: 25px 0;
+			}
+
+			.marquee-track {
+			  display: flex;
+			  width: max-content;
+			  animation: marquee 28s linear infinite;
+			}
+
+			.marquee-track span {
+			  font-size: 40px;
+			  font-weight: 600;
+			  letter-spacing: -2px;
+			  white-space: nowrap;
+			  padding-right: 45px;
+			}
+
+			.marquee-track i {
+			  color: var(--lime);
+			  font-style: normal;
+			  margin: 0 20px;
+			}
+
+			/* ABOUT */
+
+			.section-space {
+			  padding-top: 140px;
+			  padding-bottom: 140px;
+			}
+
+			.section-label {
+			  font-size: 10px;
+			  color: var(--lime);
+			  letter-spacing: 3px;
+			  margin-bottom: 35px;
+			}
+
+			.about-heading {
+			  font-size: clamp(38px, 5vw, 72px);
+			  line-height: 1.1;
+			  letter-spacing: -3px;
+			}
+
+			.about-heading span {
+			  color: #777970;
+			  font-family: 'Playfair Display', serif;
+			  font-style: italic;
+			}
+
+			.about-copy {
+			  font-size: 15px;
+			  color: #aaa;
+			  line-height: 2;
+			}
+
+			/* STATS */
+
+			.stats {
+			  border-top: 1px solid #383a34;
+			  border-bottom: 1px solid #383a34;
+			}
+
+			.stat-number {
+			  font-size: clamp(40px, 5vw, 65px);
+			  font-weight: 600;
+			  letter-spacing: -4px;
+			}
+
+			.stat-label {
+			  font-size: 11px;
+			  color: #999;
+			  letter-spacing: 1px;
+			}
+
+			/* SERVICES */
+
+			.services {
+			  background: #eae8df;
+			  color: #171916;
+			}
+
+			.service-item {
+			  border-top: 1px solid rgba(0,0,0,.25);
+			  padding: 27px 0;
+			  transition: padding .35s;
+			}
+
+			.service-item:last-child {
+			  border-bottom: 1px solid rgba(0,0,0,.25);
+			}
+
+			.service-item:hover {
+			  padding-left: 18px;
+			}
+
+			.service-item h3 {
+			  font-size: clamp(25px, 3.5vw, 43px);
+			  letter-spacing: -1.5px;
+			}
+
+			.service-number {
+			  color: #777;
+			  font-size: 12px;
+			}
+
+			.service-arrow {
+			  transition: transform .35s;
+			  font-size: 26px;
+			}
+
+			.service-item:hover .service-arrow {
+			  transform: rotate(45deg);
+			}
+
+			/* PROJECTS */
+
+			.project {
+			  position: relative;
+			  overflow: hidden;
+			}
+
+			.project img {
+			  width: 100%;
+			  height: 100%;
+			  object-fit: cover;
+			  transition: transform .8s cubic-bezier(.2,.7,.3,1);
+			}
+
+			.project:hover img {
+			  transform: scale(1.055);
+			}
+
+			.project-overlay {
+			  position: absolute;
+			  inset: 0;
+			  background: linear-gradient(transparent 45%,rgba(0,0,0,.75));
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: flex-end;
+			  padding: 30px;
+			}
+
+			.project-title {
+			  font-size: 30px;
+			  font-weight: 600;
+			}
+
+			.project-category {
+			  font-size: 10px;
+			  color: #ddd;
+			  letter-spacing: 2px;
+			  margin-bottom: 10px;
+			}
+
+			/* PROCESS */
+
+			.process-card {
+			  border-top: 1px solid rgba(255,255,255,.25);
+			  padding-top: 25px;
+			}
+
+			.process-card h3 {
+			  font-family: 'Playfair Display', serif;
+			  font-size: 28px;
+			  margin: 25px 0 12px;
+			}
+
+			.process-card p {
+			  color: #999;
+			  font-size: 13px;
+			  line-height: 1.9;
+			}
+
+			/* QUOTE */
+
+			.quote-section {
+			  background: var(--lime);
+			  color: var(--dark);
+			}
+
+			.quote {
+			  font-family: 'Playfair Display', serif;
+			  font-size: clamp(35px, 6vw, 80px);
+			  line-height: 1.15;
+			  letter-spacing: -2px;
+			}
+
+			/* CONTACT */
+
+			.contact-heading {
+			  font-size: clamp(50px, 9vw, 120px);
+			  line-height: .95;
+			  letter-spacing: -7px;
+			}
+
+			.contact-heading span {
+			  font-family: 'Playfair Display', serif;
+			  font-style: italic;
+			  color: var(--lime);
+			  font-weight: 500;
+			}
+
+			/* FOOTER */
+
+			.footer {
+			  border-top: 1px solid #353731;
+			}
+
+			.footer-link {
+			  color: #999;
+			  transition: color .3s;
+			}
+
+			.footer-link:hover {
+			  color: var(--lime);
+			}
+
+			/* ANIMATIONS */
+
+			@keyframes heroText {
+			  from {
+				opacity: 0;
+				transform: translateY(55px);
+			  }
+			  to {
+				opacity: 1;
+				transform: translateY(0);
+			  }
+			}
+
+			@keyframes imageEnter {
+			  from {
+				opacity: 0;
+				transform: translateY(35px);
+			  }
+			  to {
+				opacity: 1;
+				transform: translateY(0);
+			  }
+			}
+
+			@keyframes marquee {
+			  to {
+				transform: translateX(-50%);
+			  }
+			}
+
+			@keyframes reveal {
+			  from {
+				opacity: 0;
+				transform: translateY(40px);
+			  }
+			  to {
+				opacity: 1;
+				transform: translateY(0);
+			  }
+			}
+
+			/* Scroll animation with safe fallback */
+
+			@supports (animation-timeline: view()) {
+			  .scroll-reveal {
+				animation: reveal linear both;
+				animation-timeline: view();
+				animation-range: entry 0% entry 35%;
+			  }
+			}
+
+			/* RESPONSIVE */
+
+			@media(max-width: 767px) {
+
+			  .navbar {
+				height: 75px;
+			  }
+
+			  .desktop-menu,
+			  .desktop-contact {
+				display: none;
+			  }
+
+			  .menu-icon {
+				display: block;
+			  }
+
+			  .menu-check:checked ~ .mobile-menu {
+				display: flex;
+			  }
+
+			  .mobile-menu {
+				flex-direction: column;
+				gap: 22px;
+				padding: 25px;
+				background: #20221e;
+				font-size: 14px;
+			  }
+
+			  .hero {
+				padding-top: 75px;
+			  }
+
+			  .hero-visual {
+				height: 420px;
+				margin-top: 55px;
+			  }
+
+			  .hero-main-image {
+				width: 88%;
+			  }
+
+			  .hero-side-note {
+				width: 190px;
+				padding: 20px;
+				bottom: 25px;
+			  }
+
+			  .hero-side-note h3 {
+				font-size: 21px;
+			  }
+
+			  .section-space {
+				padding-top: 90px;
+				padding-bottom: 90px;
+			  }
+
+			  .contact-heading {
+				letter-spacing: -3px;
+			  }
+
+			  .project-title {
+				font-size: 24px;
+			  }
+
+			  .marquee-track span {
+				font-size: 29px;
+			  }
+			}
+
+			@media(prefers-reduced-motion: reduce) {
+			  *,
+			  *::before,
+			  *::after {
+				scroll-behavior: auto !important;
+				animation: none !important;
+				transition: none !important;
+			  }
+			}
+
+		</style>
+	</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-12 h-full flex items-center justify-between">
+
+    <a href="#" class="logo">
+      NORTHSTAR<span style="color:var(--lime)">®</span>
+    </a>
+
+    <div class="desktop-menu flex gap-10 text-xs tracking-wider">
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#services" class="nav-link">SERVICES</a>
+      <a href="#work" class="nav-link">PROJECTS</a>
+      <a href="#approach" class="nav-link">APPROACH</a>
+    </div>
+
+    <a href="#contact" class="desktop-contact text-xs border border-white px-5 py-3 hover:bg-white hover:text-black transition">
+      START A PROJECT ↗
+    </a>
+
+    <label for="menu" class="menu-icon">☰</label>
+
+    <input type="checkbox" id="menu" class="menu-check">
+
+    <div class="mobile-menu absolute left-0 right-0 top-20 z-50">
+      <a href="#about">ABOUT</a>
+      <a href="#services">SERVICES</a>
+      <a href="#work">PROJECTS</a>
+      <a href="#approach">APPROACH</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+
+  </nav>
+</header>
+
+
+<!-- HERO -->
+
+<main>
+
+<section class="hero max-w-7xl mx-auto px-6 lg:px-12">
+
+  <div class="flex justify-between items-center mb-12">
+
+    <p class="eyebrow">Independent Creative Studio / Est. 2024</p>
+
+    <p class="hidden md:block text-xs text-gray-500">
+      BASED EVERYWHERE · WORKING WORLDWIDE
+    </p>
+
+  </div>
+
+  <h1 class="hero-heading">
+    We create<br>
+    <span class="italic">digital</span> worlds<br>
+    that matter<span style="color:var(--lime)">.</span>
+  </h1>
+
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mt-12">
+
+    <p class="hero-description">
+      Strategy-led creativity for brands with something
+      meaningful to say. We bring ideas to life through
+      design, technology and imagination.
+    </p>
+
+    <a href="#work" class="text-link">
+      DISCOVER OUR WORK <span style="color:var(--lime)">↘</span>
+    </a>
+
+  </div>
+
+  <div class="hero-visual">
+
+    <div class="hero-main-image">
+      <img
+        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=90"
+        alt="Creative design studio">
+    </div>
+
+    <div class="hero-side-note">
+
+      <p>OUR CREATIVE PHILOSOPHY</p>
+
+      <h3>Make it meaningful. Make it memorable.</h3>
+
+      <p>We believe the best work begins with a better question.</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MOVING TEXT -->
+
+<section class="marquee">
+  <div class="marquee-track">
+
+    <span>THINK DIFFERENTLY <i>✳</i> CREATE FEARLESSLY <i>✳</i> MAKE AN IMPACT <i>✳</i></span>
+
+    <span>THINK DIFFERENTLY <i>✳</i> CREATE FEARLESSLY <i>✳</i> MAKE AN IMPACT <i>✳</i></span>
+
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="section-space max-w-7xl mx-auto px-6 lg:px-12">
+
+  <div class="grid md:grid-cols-2 gap-16 items-center">
+
+    <div class="scroll-reveal">
+
+      <p class="section-label">01 / THE STUDIO</p>
+
+      <h2 class="about-heading">
+        We don't just make things look good.
+        <span>We make them mean something.</span>
+      </h2>
+
+    </div>
+
+    <div class="scroll-reveal">
+
+      <p class="about-copy">
+        NORTHSTAR is an independent digital creative studio
+        working at the intersection of strategy, design and
+        technology.
+      </p>
+
+      <p class="about-copy mt-6">
+        We partner with ambitious businesses to create identities,
+        digital experiences and ideas that connect with people.
+        Every detail has a reason. Every project has a purpose.
+      </p>
+
+      <a href="#contact" class="text-link mt-10">
+        GET TO KNOW US <span style="color:var(--lime)">↗</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats py-12">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-10">
+
+    <div class="scroll-reveal">
+      <h3 class="stat-number">08<span style="color:var(--lime)">+</span></h3>
+      <p class="stat-label">YEARS OF EXPERIENCE</p>
+    </div>
+
+    <div class="scroll-reveal">
+      <h3 class="stat-number">60<span style="color:var(--lime)">+</span></h3>
+      <p class="stat-label">PROJECTS CREATED</p>
+    </div>
+
+    <div class="scroll-reveal">
+      <h3 class="stat-number">24</h3>
+      <p class="stat-label">GLOBAL PARTNERS</p>
+    </div>
+
+    <div class="scroll-reveal">
+      <h3 class="stat-number">12</h3>
+      <p class="stat-label">INDUSTRIES EXPLORED</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="services py-28">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="grid md:grid-cols-2 gap-12 mb-16">
+
+      <div class="scroll-reveal">
+
+        <p class="section-label" style="color:#515b32">02 / OUR EXPERTISE</p>
+
+        <h2 class="text-5xl md:text-7xl font-semibold tracking-tight">
+          What we<br>bring to life.
+        </h2>
+
+      </div>
+
+      <p class="text-gray-600 leading-8 self-end max-w-sm text-sm">
+        Different disciplines. One creative vision.
+        We combine our expertise to build complete
+        brand and digital experiences.
+      </p>
+
+    </div>
+
+    <div>
+
+      <div class="service-item flex justify-between items-center">
+        <div class="flex items-center gap-8">
+          <span class="service-number">01</span>
+          <h3>Brand Strategy</h3>
+        </div>
+        <span class="service-arrow">↗</span>
+      </div>
+
+      <div class="service-item flex justify-between items-center">
+        <div class="flex items-center gap-8">
+          <span class="service-number">02</span>
+          <h3>Creative Direction</h3>
+        </div>
+        <span class="service-arrow">↗</span>
+      </div>
+
+      <div class="service-item flex justify-between items-center">
+        <div class="flex items-center gap-8">
+          <span class="service-number">03</span>
+          <h3>Digital Experiences</h3>
+        </div>
+        <span class="service-arrow">↗</span>
+      </div>
+
+      <div class="service-item flex justify-between items-center">
+        <div class="flex items-center gap-8">
+          <span class="service-number">04</span>
+          <h3>Web Development</h3>
+        </div>
+        <span class="service-arrow">↗</span>
+      </div>
+
+      <div class="service-item flex justify-between items-center">
+        <div class="flex items-center gap-8">
+          <span class="service-number">05</span>
+          <h3>Digital Campaigns</h3>
+        </div>
+        <span class="service-arrow">↗</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="work" class="section-space max-w-7xl mx-auto px-6 lg:px-12">
+
+  <div class="flex flex-col md:flex-row justify-between md:items-end gap-8 mb-16">
+
+    <div class="scroll-reveal">
+
+      <p class="section-label">03 / SELECTED WORK</p>
+
+      <h2 class="text-6xl md:text-8xl font-semibold tracking-tight">
+        Selected<br><span class="serif italic font-normal">stories.</span>
+      </h2>
+
+    </div>
+
+    <p class="text-gray-400 text-sm max-w-xs leading-7">
+      A collection of ideas brought to life through
+      thoughtful design and creative collaboration.
+    </p>
+
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-7">
+
+    <article class="project scroll-reveal h-96 md:h-[530px]">
+
+      <img
+        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85"
+        alt="Fashion creative campaign">
+
+      <div class="project-overlay">
+
+        <p class="project-category">01 / BRAND IDENTITY</p>
+
+        <h3 class="project-title">MONOCHROME</h3>
+
+        <p class="text-sm text-gray-300 mt-2">A new perspective on fashion.</p>
+
+      </div>
+
+    </article>
+
+
+    <article class="project scroll-reveal h-96 md:h-[530px] md:mt-24">
+
+      <img
+        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+        alt="Modern interior design">
+
+      <div class="project-overlay">
+
+        <p class="project-category">02 / DIGITAL EXPERIENCE</p>
+
+        <h3 class="project-title">FORM HOUSE</h3>
+
+        <p class="text-sm text-gray-300 mt-2">Spaces designed around people.</p>
+
+      </div>
+
+    </article>
+
+
+    <article class="project scroll-reveal h-96 md:h-[530px]">
+
+      <img
+        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
+        alt="Contemporary workspace">
+
+      <div class="project-overlay">
+
+        <p class="project-category">03 / WEB DESIGN</p>
+
+        <h3 class="project-title">WORKSPACE</h3>
+
+        <p class="text-sm text-gray-300 mt-2">A better way to work.</p>
+
+      </div>
+
+    </article>
+
+    <article class="project scroll-reveal h-96 md:h-[530px] md:mt-24">
+      <img
+        src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1000&q=85"
+        alt="Creative lifestyle project">
+      <div class="project-overlay">
+        <p class="project-category">04 / ART DIRECTION</p>
+        <h3 class="project-title">OBJECT STUDIO</h3>
+        <p class="text-sm text-gray-300 mt-2">
+			Finding beauty in the everyday.
+		</p>
+      </div>
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- APPROACH -->
+
+<section id="approach" class="py-28 bg-[#20221e]">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="scroll-reveal mb-20">
+
+      <p class="section-label">04 / HOW WE WORK</p>
+
+      <h2 class="text-5xl md:text-7xl font-semibold tracking-tight">
+        Thoughtful<br>by design.
+      </h2>
+
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+
+      <div class="process-card scroll-reveal">
+
+        <span class="eyebrow">01 / DISCOVER</span>
+
+        <h3>Listen first.</h3>
+
+        <p>
+          We understand your business, your audience and
+          the opportunities ahead.
+        </p>
+
+      </div>
+
+      <div class="process-card scroll-reveal">
+
+        <span class="eyebrow">02 / STRATEGY</span>
+
+        <h3>Think deeper.</h3>
+
+        <p>
+          We find the right direction before we begin
+          creating anything.
+        </p>
+
+      </div>
+
+      <div class="process-card scroll-reveal">
+
+        <span class="eyebrow">03 / CREATE</span>
+
+        <h3>Make it real.</h3>
+
+        <p>
+          We bring ideas to life with thoughtful
+          design and careful execution.
+        </p>
+
+      </div>
+
+      <div class="process-card scroll-reveal">
+
+        <span class="eyebrow">04 / DELIVER</span>
+
+        <h3>Move forward.</h3>
+
+        <p>
+          We launch, refine and help your brand
+          make a lasting impression.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUOTE -->
+
+<section class="quote-section py-24">
+
+  <div class="max-w-5xl mx-auto px-6 text-center scroll-reveal">
+
+    <p class="text-xs tracking-widest mb-10">A CREATIVE BELIEF</p>
+
+    <h2 class="quote">
+      "The details are not the details.
+      They make the design."
+    </h2>
+
+    <p class="text-xs tracking-widest mt-10">
+      — A PRINCIPLE WE LIVE BY
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="section-space max-w-7xl mx-auto px-6 lg:px-12">
+
+  <div class="scroll-reveal">
+
+    <p class="section-label">05 / LET'S CREATE SOMETHING</p>
+
+    <h2 class="contact-heading">
+      Have a good<br>
+      idea<span>?</span><br>
+      Let's talk.
+    </h2>
+
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mt-16">
+
+      <p class="text-gray-400 max-w-sm text-sm leading-8">
+        Have a project in mind? We'd love to hear about it.
+        Let's create something that makes a difference.
+      </p>
+
+      <a href="mailto:hello@northstar.studio"
+        class="text-link text-base">
+        HELLO@NORTHSTAR.STUDIO
+        <span style="color:var(--lime)">↗</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer py-14">
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="grid md:grid-cols-3 gap-12">
+
+      <div>
+
+        <a href="#" class="logo text-3xl">
+          NORTHSTAR<span style="color:var(--lime)">®</span>
+        </a>
+
+        <p class="text-gray-500 text-xs mt-6 leading-7">
+          Independent minds.<br>
+          Meaningful digital experiences.
+        </p>
+
+      </div>
+
+      <div>
+
+        <p class="eyebrow mb-7">EXPLORE</p>
+
+        <div class="flex flex-col gap-4 text-sm">
+
+          <a href="#about" class="footer-link">About</a>
+
+          <a href="#services" class="footer-link">Services</a>
+
+          <a href="#work" class="footer-link">Our Work</a>
+
+          <a href="#approach" class="footer-link">Our Approach</a>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <p class="eyebrow mb-7">FOLLOW ALONG</p>
+
+        <div class="flex flex-col gap-4 text-sm">
+
+          <a href="https://instagram.com" class="footer-link">Instagram ↗</a>
+
+          <a href="https://linkedin.com" class="footer-link">LinkedIn ↗</a>
+
+          <a href="https://behance.net" class="footer-link">Behance ↗</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 mt-16 pt-7 flex flex-col md:flex-row justify-between gap-5 text-xs text-gray-500">
+
+      <p>© 2026 NORTHSTAR® STUDIO. ALL RIGHTS RESERVED.</p>
+
+      <p>MADE WITH INTENTION. BUILT TO MATTER.</p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
